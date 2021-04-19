@@ -18,7 +18,7 @@
     <div class="wrapper">
         <main>
             <div class="authorization_head">
-            	<img class="mark" src="resources/img/logo.png" />
+            	<img class="mark" src="resources/img/logo.png"/>
                 <div class="logo">Seattle Library</div>
             </div>
             <div class="authorization">
@@ -31,6 +31,13 @@
                         <input type="password" class="input" id="password" name="password" required>
                         <label class="label">パスワード（確認用）</label>
                         <input type="password" class="input" id="passwordForCheck" name="passwordForCheck" required>
+                        <c:if test="${not empty passError}">
+                        	<div class="error">${passError}</div>
+						</c:if>
+						<c:if test="${not empty halfWidthError}">
+                        	<div class="error">${halfWidthError}</div>
+						</c:if>
+                        
                         <input type="submit" class="button primary" value="作成する" >
                     </form>
                 </div>
@@ -41,6 +48,7 @@
 					</form>
                 </div>
             </div>
+            
         </main>
         <footer>
             <div class="copyright">
