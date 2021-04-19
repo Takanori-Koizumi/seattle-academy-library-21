@@ -40,8 +40,7 @@ public class DeleteBookController {
             @RequestParam("bookId") Integer bookId,
             Model model) {
         logger.info("Welcome delete! The client locale is {}.", locale);
-        String sql = "delete from books where id=" + bookId + ";";
-        jdbcTemplate.update(sql);
+        booksService.deleteSystem(bookId);
         model.addAttribute("bookList", booksService.getBookList());
         return "home";
 
