@@ -90,11 +90,4 @@ public class AccountController {
         return "home";
     }
 
-    private void isValid(String target) {
-        //半角英数字であるかチェック
-        if (target.matches("^[A-Za-z0-9]+$")) {
-
-        }
-    }
-
 }
