@@ -81,6 +81,7 @@ public class BooksService {
     }
 
     /**
+
      * 最新のIDを取得する
      */
 
@@ -88,5 +89,12 @@ public class BooksService {
         String sql = "select max(id) from books ;";
         int id = jdbcTemplate.queryForObject(sql, Integer.class);
         return id;
+
+     * 書籍削除機能
+     */
+    public void deleteSystem(int bookId) {
+        String sql = "delete from books where id=" + bookId + ";";
+        jdbcTemplate.update(sql);
+
     }
 }
