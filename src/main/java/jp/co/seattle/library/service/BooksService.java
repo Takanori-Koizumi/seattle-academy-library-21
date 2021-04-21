@@ -89,4 +89,13 @@ public class BooksService {
         int latestBookId = jdbcTemplate.queryForObject(sql, Integer.class);
         return latestBookId;
     }
+
+    /**
+    * 書籍削除機能
+    */
+    public void deleteSystem(int bookId) {
+        String sql = "delete from books where id=" + bookId + ";";
+        jdbcTemplate.update(sql);
+
+    }
 }
