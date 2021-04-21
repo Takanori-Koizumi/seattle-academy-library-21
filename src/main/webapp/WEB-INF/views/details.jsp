@@ -50,7 +50,7 @@
                  <div class="content_right">
                      <div>
                          <span>書籍名</span>
-                         <p>${bookDetailsInfo.title}</p>
+	                     <p>${bookDetailsInfo.title}</p>
                      </div>
                      <div>
                          <span>著者名</span>
@@ -59,6 +59,18 @@
                      <div>
                          <span>出版社</span>
                          <p>${bookDetailsInfo.publisher}</p>
+                     </div>
+                     <div>
+                         <span>出版日</span>
+                         <p>${bookDetailsInfo.publishDate}</p>
+                     </div>
+                     <div>
+                         <span>ISBN</span>
+                         <p>${bookDetailsInfo.isbn}</p>
+                     </div>
+                     <div>
+                         <span>説明文</span>
+                         <p>${bookDetailsInfo.description}</p>
                      </div>
                  </div>
             </div>
