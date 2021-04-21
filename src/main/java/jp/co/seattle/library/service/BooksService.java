@@ -81,12 +81,12 @@ public class BooksService {
     }
 
     /**
-     * 最新のIDを取得する
+     * 最新の本のIDを取得する
      */
 
-    public int getId() {
+    public int getlatestBookId() {
         String sql = "select max(id) from books ;";
-        int id = jdbcTemplate.queryForObject(sql, Integer.class);
-        return id;
+        int latestBookId = jdbcTemplate.queryForObject(sql, Integer.class);
+        return latestBookId;
     }
 }
