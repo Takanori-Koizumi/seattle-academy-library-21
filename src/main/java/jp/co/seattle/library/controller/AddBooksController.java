@@ -1,5 +1,6 @@
 package jp.co.seattle.library.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import jp.co.seattle.library.dto.BookDetailsInfo;
 import jp.co.seattle.library.service.BooksService;
 import jp.co.seattle.library.service.ThumbnailService;
+
 
 /**
  * Handles requests for the application home page.
@@ -95,11 +98,11 @@ public class AddBooksController {
         // 出版日のバリデーションチェック
 
         boolean isValidDate = publishDate.matches("^[0-9]+$");
-        boolean a = false;
+        boolean isVaildCheck = false;
 
         if (!isValidDate) {
             model.addAttribute("dateError", "出版日は半角数字のYYYYMMDD形式で入力してください");
-            a = true;
+            isVaildCheck = true;
         }
         try {
             // 日付チェック
@@ -108,23 +111,23 @@ public class AddBooksController {
             sdf.parse(publishDate);
             bookInfo.setPublishDate(publishDate);
 
-        } catch (Exception ex) {
+        } catch (ParseException e) {
             model.addAttribute("dateError", "出版日は半角数字のYYYYMMDD形式で入力してください");
-            a = true;
+            isVaildCheck = true;
         }
 
         //ISBNのバリデーションチェック
 
-        if (!isbn.equals("")) {
+        if (!StringUtils.isEmpty(isbn)) {
                 boolean isValidIsbn = isbn.matches("^[0-9]+$");
                 int isbnNum = String.valueOf(isbn).length();
                 if (!isValidIsbn || isbnNum != 10 || isbnNum != 13) {
                     model.addAttribute("isbnError", "ISBNの桁数または半角数字が正しくありません");
-                    a = true;
+                    isVaildCheck = true;
                 }
             }
 
-            if (a == true) {
+            if (isVaildCheck) {
                 return "addBook";
             }
 
@@ -135,8 +138,8 @@ public class AddBooksController {
 
         // TODO 登録した書籍の詳細情報を表示するように実装
 
-        int id = booksService.getId();
-        BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(id);
+        int registBookId = booksService.getlatestBookId();
+        BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(registBookId);
         model.addAttribute("bookDetailsInfo", bookDetailsInfo);
 
         //  詳細画面に遷移する
