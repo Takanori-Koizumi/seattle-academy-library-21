@@ -98,4 +98,22 @@ public class BooksService {
         jdbcTemplate.update(sql);
 
     }
+
+    /**
+     * 書籍編集機能
+     */
+
+    public void editSystem(BookDetailsInfo bookInfo) {
+        String sql = "update books set title='" + bookInfo.getTitle() + "',author='" + bookInfo.getAuthor()
+                + "',publisher='" + bookInfo.getPublisher()
+                + "',publish_date='" + bookInfo.getPublishDate()
+                + "',thumbnail_url='" + bookInfo.getThumbnailUrl() + "',thumbnail_name='" + bookInfo.getThumbnailName()
+                + "',upd_date=sysdate(),isbn='" + bookInfo.getIsbn() + "',description='" +
+                bookInfo.getDescription() + "' where id=" + bookInfo.getBookId() + ";";
+
+        jdbcTemplate.update(sql);
+    }
+
+
+
 }
