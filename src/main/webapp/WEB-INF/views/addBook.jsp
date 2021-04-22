@@ -72,7 +72,7 @@
                             <input type="text" name="title" value="${bookInfo.title}">
                         </c:if>
                         <c:if test="${empty bookInfo}">
-                            <input type="text" name="title" autocomplete="off">
+                            <input type="text" name="title" autocomplete="off" required>
                         </c:if>
                     </div>
                     <div>
@@ -81,7 +81,7 @@
                             <input type="text" name="author" value="${bookInfo.author}">
                         </c:if>
                         <c:if test="${empty bookInfo}">
-                            <input type="text" name="author" autocomplete="off">
+                            <input type="text" name="author" autocomplete="off" required>
                         </c:if>
                     </div>
                     <div>
@@ -90,7 +90,7 @@
                             <input type="text" name="publisher" value="${bookInfo.publisher}">
                         </c:if>
                         <c:if test="${empty bookInfo}">
-                            <input type="text" name="publisher">
+                            <input type="text" name="publisher" required>
                         </c:if>
                     </div>
                     <div>
@@ -99,7 +99,7 @@
                             <input type="text" name="publishDate" placeholder="YYYYMMDD" value="${bookInfo.publishDate}">
                         </c:if>
                         <c:if test="${empty bookInfo}">
-                            <input type="text" name="publishDate" placeholder="YYYYMMDD">
+                            <input type="text" name="publishDate" placeholder="YYYYMMDD" required>
                         </c:if>
                     </div>
                     <div>

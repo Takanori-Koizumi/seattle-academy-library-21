@@ -31,7 +31,6 @@
     </header>
     <main>
         <h1>書籍の詳細</h1>
-        <<<<<<< HEAD
         <div class="content_body detail_book_content">
             <div class="content_left">
                 <span>書籍の画像</span>
