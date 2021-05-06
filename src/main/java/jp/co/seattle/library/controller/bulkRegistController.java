@@ -37,6 +37,12 @@ public class bulkRegistController {
     @Autowired
     private ThumbnailService thumbnailService;
 
+    /**
+     * 一括登録画面遷移
+     * @param model
+     * @return 遷移先画面
+     */
+
     @RequestMapping(value = "/bulkRegistration", method = RequestMethod.GET) //value＝actionで指定したパラメータ
     //RequestParamでname属性を取得
     public String bulkRegist(Model model) {
@@ -83,7 +89,6 @@ public class bulkRegistController {
                 bookInfo.setTitle(bookData[0]);
                 bookInfo.setAuthor(bookData[1]);
                 bookInfo.setPublisher(bookData[2]);
-                bookInfo.setIsbn(bookData[4]);
                 bookInfo.setDescription(bookData[5]);
 
                 // 出版日のバリデーションチェック
@@ -116,6 +121,8 @@ public class bulkRegistController {
                         model.addAttribute("isbnError", "ISBNの桁数または半角数字が正しくありません");
                         isVaildCheck = true;
                     }
+                    bookInfo.setIsbn(bookData[4]);
+
                 }
 
                 //1データごとのバリデーションチェック
