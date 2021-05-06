@@ -41,6 +41,9 @@ public class DetailsController {
 
         model.addAttribute("bookDetailsInfo", bookdService.getBookInfo(bookId));
 
+        String bollowCheck = bookdService.bollowCheck(bookId);
+        model.addAttribute("rendCheck", bollowCheck);
+
         return "details";
     }
 }

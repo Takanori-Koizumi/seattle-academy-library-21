@@ -121,7 +121,7 @@ public class AddBooksController {
         if (!StringUtils.isEmpty(isbn)) {
                 boolean isValidIsbn = isbn.matches("^[0-9]+$");
                 int isbnNum = String.valueOf(isbn).length();
-                if (!isValidIsbn || isbnNum != 10 || isbnNum != 13) {
+                if (!isValidIsbn || !(isbnNum == 10 || isbnNum == 13)) {
                     model.addAttribute("isbnError", "ISBNの桁数または半角数字が正しくありません");
                     isVaildCheck = true;
                 }
@@ -139,8 +139,14 @@ public class AddBooksController {
         // TODO 登録した書籍の詳細情報を表示するように実装
 
         int registBookId = booksService.getlatestBookId();
+
+        booksService.addLending(registBookId);
+
         BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(registBookId);
         model.addAttribute("bookDetailsInfo", bookDetailsInfo);
+
+        String bollowCheck = booksService.bollowCheck(registBookId);
+        model.addAttribute("rendCheck", bollowCheck);
 
         //  詳細画面に遷移する
         return "details";
