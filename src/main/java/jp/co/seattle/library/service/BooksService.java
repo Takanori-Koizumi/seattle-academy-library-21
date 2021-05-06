@@ -111,7 +111,7 @@ public class BooksService {
 
 
     /**
-     * 書籍編集機能
+     * 書籍編集機能(画像変更あり)
      */
 
     public void editSystem(BookDetailsInfo bookInfo) {
@@ -125,6 +125,9 @@ public class BooksService {
         jdbcTemplate.update(sql);
     }
 
+    /**
+     * 書籍編集機能(画像変更なし)
+     */
     public void thumbnailNullEditSystem(BookDetailsInfo bookInfo) {
         String sql = "update books set title='" + bookInfo.getTitle() + "',author='" + bookInfo.getAuthor()
                 + "',publisher='" + bookInfo.getPublisher()

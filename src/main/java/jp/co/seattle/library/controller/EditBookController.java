@@ -101,6 +101,12 @@ public class EditBookController {
             }
         }
 
+        if (file.isEmpty()) {
+            BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(bookId);
+            bookInfo.setThumbnailName(bookDetailsInfo.getThumbnailName());
+            bookInfo.setThumbnailUrl(bookDetailsInfo.getThumbnailUrl());
+        }
+
         // 出版日のバリデーションチェック
 
         boolean isValidDate = publishDate.matches("^[0-9]+$");
