@@ -2,9 +2,7 @@ package jp.co.seattle.library.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,7 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 import jp.co.seattle.library.dto.BookDetailsInfo;
 import jp.co.seattle.library.service.BooksService;
 import jp.co.seattle.library.service.ThumbnailService;
-
 @Controller //APIの入り口
 public class bulkRegistController {
 
@@ -66,11 +63,7 @@ public class bulkRegistController {
             Model model) {
         logger.info("Welcome insertBooks.java! The client locale is {}.", locale);
 
-        try {
-
-            InputStream stream = file.getInputStream();
-            Reader reader = new InputStreamReader(stream);
-            BufferedReader br = new BufferedReader(reader);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream()));) {
 
             ArrayList<BookDetailsInfo> bookInfos = new ArrayList<BookDetailsInfo>();
 
@@ -159,6 +152,5 @@ public class bulkRegistController {
             String error = "エラーです";
             return error;
         }
-
     }
 }

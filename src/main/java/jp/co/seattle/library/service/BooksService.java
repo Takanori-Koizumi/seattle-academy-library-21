@@ -114,4 +114,19 @@ public class BooksService {
         jdbcTemplate.update(sql);
     }
 
+    /**
+     * 書籍検索機能
+     */
+
+    public List<BookInfo> getSearchBookList(String searchTitle) {
+
+        // TODO 取得したい情報を取得するようにSQLを修正
+        List<BookInfo> getedBookList = jdbcTemplate.query(
+
+                "select * from books where title like '%" + searchTitle + "%'",
+                new BookInfoRowMapper());
+
+        return getedBookList;
+    }
+
 }
