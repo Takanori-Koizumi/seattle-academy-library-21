@@ -36,7 +36,7 @@
                     <input id="sbox5" type="text" name="searchTitle" value="${searchedTitle}">
                 </c:if>
                 <c:if test="${empty searchedTitle}">
-                    <input id="sbox5" type="text" name="searchTitle" autocomplete="off" placeholder="キーワードを入力">
+                    <input id="sbox5" type="text" name="searchTitle" autocomplete="off" placeholder="タイトルを入力">
                 </c:if>
                 <button id="sbtn5" type="submit">検索</button>
             </div>
@@ -58,7 +58,12 @@
                                 </a> <input type="hidden" name="bookId" value="${bookInfo.bookId}">
                             </form>
                             <ul>
-                                <li class="book_title">${bookInfo.title}</li>
+                                <c:if test="${not empty bookInfo}">
+                                    <li class="book_title">${bookInfo.title}</li>
+                                    <li class="book_author">${bookInfo.author}</li>
+                                    <li class="book_publisher">出版社:${bookInfo.publisher}</li>
+                                    <li class="book_publish_date">出版日:${bookInfo.publishDate}</li>
+                                </c:if>
                             </ul>
                         </div>
                     </c:forEach>

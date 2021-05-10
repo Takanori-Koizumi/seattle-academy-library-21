@@ -57,7 +57,11 @@
                 </div>
                 <div>
                     <c:if test="${!empty csvErrors}">
-                             <div class="error">${csvErrors}</div>
+                        <div class="error">
+                            <c:forEach var="error" items="${csvErrors}">
+                                    <p>${error}</p>
+                            </c:forEach>
+                        </div>
                     </c:if>
                 </div>
                 <div>

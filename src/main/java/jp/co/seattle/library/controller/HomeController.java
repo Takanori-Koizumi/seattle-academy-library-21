@@ -37,7 +37,7 @@ public class HomeController {
 
     /**
      * 検索機能
-     *  @param locale ロケール情報
+     * @param locale ロケール情報
      * @param searchTitle 検索名
      * @param model
      * @return
@@ -46,9 +46,10 @@ public class HomeController {
     @RequestMapping(value = "/searchBooks", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
     public String searchBooks(Locale locale,
             @RequestParam("searchTitle") String searchTitle,
+            @RequestParam("radio") String matchCheck,
             Model model) {
 
-        model.addAttribute("bookList", booksService.getSearchBookList(searchTitle));
+        model.addAttribute("bookList", booksService.getSearchBookList(searchTitle, matchCheck));
         model.addAttribute("searchedTitle", searchTitle);
         return "home";
     }

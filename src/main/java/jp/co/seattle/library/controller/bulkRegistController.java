@@ -150,6 +150,9 @@ public class bulkRegistController {
                 booksService.registBook(book);
                 int registBookId = booksService.getlatestBookId();
 
+                booksService.addLending(registBookId);
+
+
             }
 
             model.addAttribute("resultMessage", "登録完了");

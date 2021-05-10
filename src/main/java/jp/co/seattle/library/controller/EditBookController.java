@@ -50,6 +50,8 @@ public class EditBookController {
      * @param publisher 出版社
      * @param publishDtea 出版日
      * @param file サムネイルファイル
+     * @parm isbn ISBN
+     * @pram description 説明文
      * @param model モデル
      * @return 遷移先画面
      */
@@ -143,13 +145,21 @@ public class EditBookController {
         }
 
         // 編集した書籍情報を編集する
-        booksService.editSystem(bookInfo);
+
+        if (!file.isEmpty()) {
+            booksService.editSystem(bookInfo);
+        } else {
+            booksService.thumbnailNullEditSystem(bookInfo);
+        }
 
         model.addAttribute("resultMessage", "編集完了");
 
 
         BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(bookId);
         model.addAttribute("bookDetailsInfo", bookDetailsInfo);
+
+        String bollowCheck = booksService.bollowCheck(bookId);
+        model.addAttribute("rendCheck", bollowCheck);
 
         //  詳細画面に遷移する
         return "details";

@@ -139,8 +139,14 @@ public class AddBooksController {
         // TODO 登録した書籍の詳細情報を表示するように実装
 
         int registBookId = booksService.getlatestBookId();
+
+        booksService.addLending(registBookId);
+
         BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(registBookId);
         model.addAttribute("bookDetailsInfo", bookDetailsInfo);
+
+        String bollowCheck = booksService.bollowCheck(registBookId);
+        model.addAttribute("rendCheck", bollowCheck);
 
         //  詳細画面に遷移する
         return "details";
