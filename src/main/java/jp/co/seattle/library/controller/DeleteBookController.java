@@ -46,4 +46,23 @@ public class DeleteBookController {
 
     }
 
+    /**
+     * 書籍を一括削除する
+     *
+     * @param locale ロケール情報
+     * @param model モデル情報
+     * @return 遷移先画面名
+     */
+    @Transactional
+    @RequestMapping(value = "/bulkDelete", method = RequestMethod.GET)
+    public String bulkDelete(
+            Locale locale,
+            Model model) {
+        logger.info("Welcome delete! The client locale is {}.", locale);
+        booksService.bulkDeleteSystem();
+        model.addAttribute("bookList", booksService.getBookList());
+        return "home";
+
+    }
+
 }

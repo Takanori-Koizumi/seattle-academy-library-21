@@ -57,8 +57,6 @@ public class BooksService {
         return bookDetailsInfo;
     }
 
-
-
     /**
      * 書籍を登録する
      *
@@ -100,6 +98,18 @@ public class BooksService {
     }
 
     /**
+     * 書籍一括削除機能
+     */
+    public void bulkDeleteSystem() {
+        String sql = "delete from books";
+        jdbcTemplate.update(sql);
+
+        String sql2 = "delete from lending";
+        jdbcTemplate.update(sql2);
+
+    }
+
+    /**
      * 書籍編集機能
      */
 
@@ -118,15 +128,22 @@ public class BooksService {
      * 書籍検索機能
      */
 
-    public List<BookInfo> getSearchBookList(String searchTitle) {
+    public List<BookInfo> getSearchBookList(String searchTitle, String matchCheck) {
 
-        // TODO 取得したい情報を取得するようにSQLを修正
+        if (matchCheck.equals("part-match")) {
+            List<BookInfo> getedBookList = jdbcTemplate.query(
+
+                    "select * from books where title like '%" + searchTitle + "%'",
+                    new BookInfoRowMapper());
+            return getedBookList;
+        }
+
         List<BookInfo> getedBookList = jdbcTemplate.query(
 
-                "select * from books where title like '%" + searchTitle + "%'",
+                "select * from books where title ='" + searchTitle + "'",
                 new BookInfoRowMapper());
-
         return getedBookList;
+
     }
 
 }

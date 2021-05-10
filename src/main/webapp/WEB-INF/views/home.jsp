@@ -26,9 +26,12 @@
     </header>
     <main>
         <h1>Home</h1>
-        <a href="<%=request.getContextPath()%>/addBook" class="btn_add_book">書籍の追加</a> <a href="<%=request.getContextPath()%>/bulkRegistration" class="btn_bulk_book">一括登録</a>
-        <div class="search_box">
-            <form id="form5" action="<%=request.getContextPath()%>/searchBooks" method="post" enctype="multipart/form-data" id="data_upload_form">
+        <a href="<%=request.getContextPath()%>/addBook" class="btn_add_book">書籍の追加</a> <a href="<%=request.getContextPath()%>/bulkRegistration" class="btn_bulk_book">一括登録</a> <a href="<%=request.getContextPath()%>/bulkDelete" class="btn_bulkDelete">一括削除</a>
+        <form id="form5" action="<%=request.getContextPath()%>/searchBooks" method="post" enctype="multipart/form-data" id="data_upload_form">
+            <div class="radio">
+                <input type="radio" name="radio" class="radio-input" id="radio-01" value="part-match" checked> <label for="radio-01">部分一致</label><br><input type="radio" name="radio" class="radio-input" id="radio-02" value="perfect-match" > <label for="radio-02">完全一致</label>
+            </div>
+            <div class="search_box">
                 <c:if test="${!empty searchedTitle}">
                     <input id="sbox5" type="text" name="searchTitle" value="${searchedTitle}">
                 </c:if>
@@ -36,8 +39,8 @@
                     <input id="sbox5" type="text" name="searchTitle" autocomplete="off" placeholder="キーワードを入力">
                 </c:if>
                 <button id="sbtn5" type="submit">検索</button>
-            </form>
-        </div>
+            </div>
+        </form>
         <div class="content_body">
             <c:if test="${!empty resultMessage}">
                 <div class="error_msg">${resultMessage}</div>
