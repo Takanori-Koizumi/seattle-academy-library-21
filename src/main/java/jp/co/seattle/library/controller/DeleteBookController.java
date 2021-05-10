@@ -43,13 +43,13 @@ public class DeleteBookController {
         logger.info("Welcome delete! The client locale is {}.", locale);
 
 
-        String beforebollowCheck = booksService.bollowCheck(bookId);
+        String beforeBollowCheck = booksService.bollowCheck(bookId);
 
-        if (beforebollowCheck.equals("貸出中")) {
+        if (beforeBollowCheck.equals("貸出中")) {
 
             model.addAttribute("bookDeleteError", "貸出中のため削除できません");
 
-            model.addAttribute("rendCheck", beforebollowCheck);
+            model.addAttribute("rendCheck", beforeBollowCheck);
 
             int registBookId = booksService.getlatestBookId();
             BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(registBookId);

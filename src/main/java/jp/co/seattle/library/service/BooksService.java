@@ -102,6 +102,7 @@ public class BooksService {
 
     /**
      * 貸出レコード削除
+     * @param bookId 書籍ID
      */
 
     public void lendingDelete(int bookId) {
@@ -139,6 +140,7 @@ public class BooksService {
 
     /**
      * 貸出機能
+     * @param bookId 書籍ID
      */
 
     public void bollowSystem(int bookId) {
@@ -148,6 +150,7 @@ public class BooksService {
 
     /**
      * 返却機能
+     * @param bookId 書籍ID
      */
 
     public void returnSystem(int bookId) {
@@ -157,6 +160,8 @@ public class BooksService {
 
     /**
      * 貸し出し判定
+     * @param bookId 書籍ID
+     * @return 書籍ステータス
      */
 
     public String bollowCheck(int bookId) {
@@ -167,6 +172,7 @@ public class BooksService {
 
     /**
      * 貸出テーブルに追加
+     * @param bookId 書籍ID
      */
 
     public void addLending(int bookId) {
