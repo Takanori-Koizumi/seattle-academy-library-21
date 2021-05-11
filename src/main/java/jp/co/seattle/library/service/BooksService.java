@@ -81,6 +81,8 @@ public class BooksService {
 
     /**
      * 最新の本のIDを取得する
+     * @param bookId 書籍ID
+     * @return 最新の書籍ID
      */
 
     public int getlatestBookId() {
@@ -91,6 +93,7 @@ public class BooksService {
 
     /**
     * 書籍削除機能
+    * @param bookId 書籍ID
     */
     public void deleteSystem(int bookId) {
         String sql = "delete from books where id=" + bookId + ";";
@@ -123,6 +126,7 @@ public class BooksService {
 
     /**
      * 書籍編集機能(画像変更あり)
+     * @param bookInfo 書籍情報
      */
 
     public void editSystem(BookDetailsInfo bookInfo) {
@@ -138,6 +142,7 @@ public class BooksService {
 
     /**
      * 書籍編集機能(画像変更なし)
+     * @param bookInfo 書籍情報
      */
     public void thumbnailNullEditSystem(BookDetailsInfo bookInfo) {
         String sql = "update books set title='" + bookInfo.getTitle() + "',author='" + bookInfo.getAuthor()
@@ -151,6 +156,9 @@ public class BooksService {
 
     /**
      * 書籍検索機能
+     * @param searchTitle 検索タイトル
+     * @param matchCheck　検索方法(部分か完全)
+     * @return 書籍リスト
      */
 
     public List<BookInfo> getSearchBookList(String searchTitle, String matchCheck) {
