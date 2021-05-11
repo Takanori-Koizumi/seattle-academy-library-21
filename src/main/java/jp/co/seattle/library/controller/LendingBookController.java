@@ -59,8 +59,8 @@ public class LendingBookController {
 
 
         //登録した書籍の詳細情報を表示するように実装
-        int registBookId = booksService.getlatestBookId();
-        BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(registBookId);
+
+        BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(bookId);
         model.addAttribute("bookDetailsInfo", bookDetailsInfo);
 
 
@@ -98,8 +98,8 @@ public class LendingBookController {
         model.addAttribute("rendCheck", afterbollowCheck);
 
         //登録した書籍の詳細情報を表示するように実装
-        int registBookId = booksService.getlatestBookId();
-        BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(registBookId);
+
+        BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(bookId);
         model.addAttribute("bookDetailsInfo", bookDetailsInfo);
 
         return "details";

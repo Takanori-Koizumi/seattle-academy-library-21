@@ -140,7 +140,7 @@ img.book_noimg, img.book_img{
     font-size: 12px;
 }
 
-a.btn_add_book,a.btn_bulk_book, button.btn_addBook,button.btn_editBook, button.btn_deleteBook,button.btn_rentBook,button.btn_returnBook,button.btn_bulkRegist {
+a.btn_add_book,a.btn_bulk_book, button.btn_addBook,button.btn_editBook, button.btn_deleteBook,button.btn_rentBook,button.btn_returnBook,button.btn_bulkRegist,a.btn_bulkDelete{
     display: inline-block;
     font-size: 16px;
     font-weight: bold;
@@ -157,6 +157,10 @@ a.btn_add_book,a.btn_bulk_book, button.btn_addBook,button.btn_editBook, button.b
 a.btn_bulk_book{
 	background-color: #66cdaa;
 }
+a.btn_bulkDelete{
+	background-color: blue;
+}
+
 button.btn_editBook{
     background-color: #9ec34b;
 }
@@ -230,7 +234,7 @@ button.btn_addBook, button.btn_editBook, button.btn_deleteBook,button.btn_rentBo
 button.btn_addBook:focus, button.btn_editBook:focus, button.btn_deleteBook:focus,button.btn_rentBook:focus,button.btn_returnBook:focus,button.btn_bulkRegist:focus {
     outline: none;
 }
-button.btn_addBook:hover, button.btn_editBook:hover, button.btn_deleteBook:hover,button.btn_rentBook:hover,button.btn_returnBook:hover,button.btn_bulkRegist:hover {
+button.btn_addBook:hover, button.btn_editBook:hover, button.btn_deleteBook:hover,button.btn_rentBook:hover,button.btn_returnBook:hover,button.btn_bulkRegist:hover .btn_bulkDelete:hover{
     cursor: pointer;
 }
 
@@ -286,3 +290,76 @@ hr.border_add {
 	color:#fa8072;
 }
 
+.search_box{
+	height:50px;
+	margin:5px 0 30px 0;
+}
+
+#form5{
+position:relative; 
+}
+#sbox5{	
+outline:0;	
+height:50px;
+padding:0 10px; 
+position:absolute; 
+left:0;
+top:0; 
+max-width:270px;
+border-radius:2px;
+background:#eee;
+}
+#sbtn5{
+width:70px;
+height:50px;
+position:absolute; 
+left:280px; 
+top:0;
+border-radius:2px;
+background:#7fbfff;
+color:#fff;
+font-weight:bold;
+font-size:16px;
+border:none;
+cursor:pointer;
+}
+#sbtn5:hover{
+background:#eee;
+color:#7fbfff;
+}
+
+.radio-input{
+  display: none;
+}
+.radio-input + label{
+  padding-left: 20px;
+  position:relative;
+  margin-right: 20px;
+}
+.radio-input + label::before{
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #999;
+  border-radius: 50%;
+}
+.radio-input:checked + label{
+  color: #d01137;
+}
+.radio-input:checked + label::after{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 7px;
+  left: 3px;
+  width: 11px;
+  height: 11px;
+  background: #d01137;
+  border-radius: 50%;
+}
+.radio{
+	margin-top:20px;
+}

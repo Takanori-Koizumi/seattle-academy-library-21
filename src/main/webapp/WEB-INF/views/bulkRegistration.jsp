@@ -52,12 +52,19 @@
             <div class="bulk_form">
                 <h2>CSVファイルをアップロードすることで書籍を一括で登録できます。</h2>
                 <div class="caution">
-                    <p>「書籍名,著者名,出版社,出版日,ISBN」の形式で記載してください。</p>
+                    <p>「書籍名,著者名,出版社,出版日,ISBN,説明文」の形式で記載してください。</p>
                     <p>※サムネイル画像は一括登録できません。編集画面で１冊単位で登録してください。</p>
                 </div>
                 <div>
-                    <c:if test="${!empty csvErrors}">
-                             <div class="error">${csvErrors}</div>
+                    <c:if test="${not empty catchError}">
+                        <div class="error">${catchError}</div>
+                    </c:if>
+                    <c:if test="${not empty csvErrors}">
+                        <div class="error">
+                            <c:forEach var="error" items="${csvErrors}">
+                                    <p>${error}</p>
+                            </c:forEach>
+                        </div>
                     </c:if>
                 </div>
                 <div>
