@@ -56,7 +56,10 @@
                     <p>※サムネイル画像は一括登録できません。編集画面で１冊単位で登録してください。</p>
                 </div>
                 <div>
-                    <c:if test="${!empty csvErrors}">
+                    <c:if test="${not empty catchError}">
+                        <div class="error">${catchError}</div>
+                    </c:if>
+                    <c:if test="${not empty csvErrors}">
                         <div class="error">
                             <c:forEach var="error" items="${csvErrors}">
                                     <p>${error}</p>
