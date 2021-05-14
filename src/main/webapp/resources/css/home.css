@@ -177,9 +177,19 @@ button.btn_bulkRegist {
 	background-color: #FF9966;
 }
 
-a:hover, button:hover {
+a:hover, button:hover:not(.btn_rentBook,.btn_returnBook) {
     opacity: 0.5;
 }
+
+.opacity_inValid{
+	opacity:0.3;
+}
+
+.opacity_hover{
+	opacity: 0.5;
+}
+
+
 
 /* ここからaddbook */
 .add_book_content, .detail_book_content {
@@ -234,9 +244,19 @@ button.btn_addBook, button.btn_editBook, button.btn_deleteBook,button.btn_rentBo
 button.btn_addBook:focus, button.btn_editBook:focus, button.btn_deleteBook:focus,button.btn_rentBook:focus,button.btn_returnBook:focus,button.btn_bulkRegist:focus {
     outline: none;
 }
-button.btn_addBook:hover, button.btn_editBook:hover, button.btn_deleteBook:hover,button.btn_rentBook:hover,button.btn_returnBook:hover,button.btn_bulkRegist:hover .btn_bulkDelete:hover{
+button.btn_addBook:hover, button.btn_editBook:hover, button.btn_deleteBook:hover,button.btn_bulkRegist:hover .btn_bulkDelete:hover{
     cursor: pointer;
 }
+
+.cursor_pointer{
+	cursor:pointer;
+}
+
+
+.cursor_default{
+	cursor: default;
+}
+
 
 hr.border_add {
 	width:850px;
