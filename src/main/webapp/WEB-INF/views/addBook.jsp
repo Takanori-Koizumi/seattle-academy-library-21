@@ -53,7 +53,12 @@
                 <div>
                     <span>書籍の画像</span> <span class="care care1">任意</span>
                     <div class="book_thumnail">
-                        <img class="book_noimg" src="resources/img/noImg.png">
+                        <c:if test="${!empty bookInfo}">
+                                <img class="book_noimg" src="resources/img/noImg.png">            
+                        </c:if>
+                        <c:if test="${empty bookInfo}">
+                            <img class="book_noimg" src="resources/img/noImg.png">
+                        </c:if>
                     </div>
                     <input type="file" accept="image/*" name="thumbnail" id="thumbnail">
                 </div>
@@ -65,6 +70,9 @@
                             </c:if>
                             <c:if test="${not empty isbnError}">
                                 <div class="error">${isbnError}</div>
+                            </c:if>
+                            <c:if test="${not empty StringError}">
+                                <div class="error">${StringError}</div>
                             </c:if>
                         </div>
                         <span>書籍名</span><span class="care care2">必須</span>

@@ -128,16 +128,33 @@ img.book_noimg, img.book_img{
 .book_title {
     font-size: 16px;
     text-align: center;
+    width: 200px;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .book_author {
     font-size: 13px;
     text-align: center;
     margin-bottom: 5px;
+    width: 200px;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    display:flex;
+    justify-content: center;
 }
 
 .book_publisher, .book_publish_date {
     font-size: 12px;
+       width: 200px;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 a.btn_add_book,a.btn_bulk_book, button.btn_addBook,button.btn_editBook, button.btn_deleteBook,button.btn_rentBook,button.btn_returnBook,button.btn_bulkRegist,a.btn_bulkDelete{
@@ -177,9 +194,19 @@ button.btn_bulkRegist {
 	background-color: #FF9966;
 }
 
-a:hover, button:hover {
+a:hover, button:hover:not(.btn_rentBook,.btn_returnBook) {
     opacity: 0.5;
 }
+
+.opacity_inValid{
+	opacity:0.3;
+}
+
+.opacity_hover{
+	opacity: 0.5;
+}
+
+
 
 /* ここからaddbook */
 .add_book_content, .detail_book_content {
@@ -206,6 +233,7 @@ a:hover, button:hover {
     width: 99.2%;
     text-indent: 1em;
     vertical-align: middle;
+    word-break: break-all;
 
 }
 .content_right input:-webkit-autofill {
@@ -234,9 +262,19 @@ button.btn_addBook, button.btn_editBook, button.btn_deleteBook,button.btn_rentBo
 button.btn_addBook:focus, button.btn_editBook:focus, button.btn_deleteBook:focus,button.btn_rentBook:focus,button.btn_returnBook:focus,button.btn_bulkRegist:focus {
     outline: none;
 }
-button.btn_addBook:hover, button.btn_editBook:hover, button.btn_deleteBook:hover,button.btn_rentBook:hover,button.btn_returnBook:hover,button.btn_bulkRegist:hover .btn_bulkDelete:hover{
+button.btn_addBook:hover, button.btn_editBook:hover, button.btn_deleteBook:hover,button.btn_bulkRegist:hover .btn_bulkDelete:hover{
     cursor: pointer;
 }
+
+.cursor_pointer{
+	cursor:pointer;
+}
+
+
+.cursor_default{
+	cursor: default;
+}
+
 
 hr.border_add {
 	width:850px;
@@ -362,4 +400,18 @@ color:#7fbfff;
 }
 .radio{
 	margin-top:20px;
+}
+
+.home_list{
+	width:200px;
+}
+.book_auther_list_1{
+	
+    overflow-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.book_auther_list_2{
+	font-size:13px;
 }

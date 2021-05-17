@@ -63,6 +63,9 @@
                             <c:if test="${not empty isbnError}">
                                 <div class="error">${isbnError}</div>
                             </c:if>
+                            <c:if test="${not empty StringError}">
+                                <div class="error">${StringError}</div>
+                            </c:if>
                         </div>
                         <span>書籍名</span><span class="care care2">必須</span>
                         <c:if test="${!empty bookInfo}">

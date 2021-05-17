@@ -7,6 +7,7 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -63,6 +64,8 @@ public class AddBooksController {
             @RequestParam("description") String description,
             Model model) {
         logger.info("Welcome insertBooks.java! The client locale is {}.", locale);
+        
+        try {
 
         // パラメータで受け取った書籍情報をDtoに格納する。
         BookDetailsInfo bookInfo = new BookDetailsInfo();
@@ -128,6 +131,7 @@ public class AddBooksController {
             }
 
             if (isVaildCheck) {
+                model.addAttribute("bookInfo", bookInfo);
                 return "addBook";
             }
 
@@ -150,6 +154,44 @@ public class AddBooksController {
 
         //  詳細画面に遷移する
         return "details";
+    } catch (DataIntegrityViolationException e) {
+        model.addAttribute("StringError", "255文字以内で入力してください");
+
+        BookDetailsInfo bookInfo = new BookDetailsInfo();
+        bookInfo.setTitle(title);
+        bookInfo.setAuthor(author);
+        bookInfo.setPublisher(publisher);
+        bookInfo.setIsbn(isbn);
+        bookInfo.setDescription(description);
+
+        String thumbnail = file.getOriginalFilename();
+
+        if (!file.isEmpty()) {
+            try {
+                // サムネイル画像をアップロード
+                String fileName = thumbnailService.uploadThumbnail(thumbnail, file);
+                // URLを取得
+                String thumbnailUrl = thumbnailService.getURL(fileName);
+
+                bookInfo.setThumbnailName(fileName);
+                bookInfo.setThumbnailUrl(thumbnailUrl);
+
+            } catch (Exception ex) {
+
+                // 異常終了時の処理
+                logger.error("サムネイルアップロードでエラー発生", e);
+                model.addAttribute("bookInfo", bookInfo);
+                return "addBook";
+            }
+        }
+
+        model.addAttribute("bookInfo", bookInfo);
+
+        return "editBook";
+    } catch (Exception e) {
+        return "editBook";
+    }
+
     }
 
 }

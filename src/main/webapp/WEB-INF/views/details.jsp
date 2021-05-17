@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="resources/css/lightbox.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="resources/js/lightbox.js" /></script>
+<script src="resources/js/book.js" /></script>
 </head>
 <body class="wrapper">
     <header>
@@ -78,10 +79,10 @@
         </div>
         <div class="edtDelBookBtn_box">
             <form method="post" action="rentBook">
-                <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="btn_rentBook">借りる</button>
+                <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="btn_rentBook" id="rent">借りる</button>
             </form>
             <form method="post" action="returnBook">
-                <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="btn_returnBook">返す</button>
+                <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="btn_returnBook" id="return">返す</button>
             </form>
             <form method="post" action="editBookReturn">
                 <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="btn_editBook">編集</button>

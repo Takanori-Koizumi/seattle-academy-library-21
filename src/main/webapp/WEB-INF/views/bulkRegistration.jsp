@@ -72,7 +72,7 @@
                 </div>
                 <div class="content_right">
                     <div class="addBookBtn_box">
-                        <button type="submit" name="bookId" class="btn_bulkRegist">登録</button>
+                        <button type="submit" name="bookId" class="btn_bulkRegist">一括登録</button>
                     </div>
                     <c:if test="${not empty resultMessage}">
                         <div class="error_msg">${resultMessage}</div>
