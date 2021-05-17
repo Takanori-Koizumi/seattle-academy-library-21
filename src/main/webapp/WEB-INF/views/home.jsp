@@ -59,10 +59,10 @@
                                     </c:if>
                                 </a> <input type="hidden" name="bookId" value="${bookInfo.bookId}">
                             </form>
-                            <ul>
+                            <ul class="home_list">
                                 <c:if test="${not empty bookInfo}">
                                     <li class="book_title">${bookInfo.title}</li>
-                                    <li class="book_author">${bookInfo.author}(著)</li>
+                                    <li class="book_author"><p class="book_auther_list_1">${bookInfo.author}</p><p class="book_auther_list_2">(著)</p></li>
                                     <li class="book_publisher">出版社:${bookInfo.publisher}</li>
                                     <li class="book_publish_date">出版日:${bookInfo.publishDate}</li>
                                 </c:if>

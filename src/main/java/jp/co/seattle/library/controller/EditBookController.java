@@ -7,6 +7,7 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -70,6 +71,8 @@ public class EditBookController {
             Model model) {
         logger.info("Welcome insertBooks.java! The client locale is {}.", locale);
 
+        try {
+        
         // パラメータで受け取った書籍情報をDtoに格納する。
         BookDetailsInfo bookInfo = new BookDetailsInfo();
         bookInfo.setBookId(bookId);
@@ -141,6 +144,8 @@ public class EditBookController {
 
         if (isVaildCheck) {
 
+            model.addAttribute("bookInfo", bookdService.getBookInfo(bookId));
+
             return "editBook";
         }
 
@@ -163,5 +168,13 @@ public class EditBookController {
 
         //  詳細画面に遷移する
         return "details";
+    } catch (DataIntegrityViolationException e) {
+        model.addAttribute("StringError", "255文字以内で入力してください");
+        model.addAttribute("bookInfo", bookdService.getBookInfo(bookId));
+        return "editBook";
+    }catch(Exception e) {
+        model.addAttribute("bookInfo", bookdService.getBookInfo(bookId));
+        return"editBook";
+    }
     }
 }
