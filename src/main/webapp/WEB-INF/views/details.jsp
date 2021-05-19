@@ -16,6 +16,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="resources/js/lightbox.js" /></script>
 <script src="resources/js/book.js" /></script>
+<script src="resources/js/user.js" /></script>
 </head>
 <body class="wrapper">
     <header>
@@ -25,6 +26,12 @@
         </div>
         <div class="right">
             <ul>
+                <li>
+                <form method="post" action="mypage">
+                <button id="mypage" type="submit"  class="menu">マイページ</button>
+                <input id="userId" type="hidden" name="userId" value="${userId}">
+                </form>             
+                </li>
                 <li><a href="<%= request.getContextPath()%>/home" class="menu">Home</a></li>
                 <li><a href="<%= request.getContextPath()%>/">ログアウト</a></li>
             </ul>
@@ -70,7 +77,7 @@
                 <div>
                     <span>ISBN</span>
                     <p>${bookDetailsInfo.isbn}</p>
-                </div>
+                </div>5
                 <div>
                     <span>説明文</span>
                     <p>${bookDetailsInfo.description}</p>

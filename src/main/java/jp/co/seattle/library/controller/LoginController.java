@@ -53,6 +53,12 @@ public class LoginController {
             return "login";
         }
         
+        //ユーザーIDを取得      
+        int userId = usersService.returnUserId(email, password);
+        model.addAttribute("userId", userId);
+        
+
+
         // 本の情報を取得して画面側に渡す
         model.addAttribute("bookList", booksService.getBookList());
         return "home";

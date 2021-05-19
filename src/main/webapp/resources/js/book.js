@@ -1,6 +1,7 @@
 $(function(){
 	
 	
+	
 	//ボタンの活性化、非活性化
 	
 	if($('#lendingStatus_label').text()=="貸出中"){
@@ -49,6 +50,8 @@ $(function(){
        		return location.href;
  		}
 	});
+	
+	
 	
 
 });
