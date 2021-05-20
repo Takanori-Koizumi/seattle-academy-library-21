@@ -61,6 +61,7 @@ public class bulkRegistController {
     @Transactional
     @RequestMapping(value = "/bulkRegist", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
     public String bulkRegist(Locale locale,
+
             @RequestParam("csvFile") MultipartFile file,
             Model model) {
         logger.info("Welcome insertBooks.java! The client locale is {}.", locale);

@@ -64,7 +64,7 @@ public class BooksService {
      */
     public void registBook(BookDetailsInfo bookInfo) {
 
-        String sql = "INSERT INTO books (title, author,publisher,publish_date,thumbnail_url,thumbnail_name,reg_date,upd_date,isbn,description"
+        String sql = "INSERT INTO books (title,author,publisher,publish_date,thumbnail_url,thumbnail_name,reg_date,upd_date,isbn,description"
                 + ") VALUES ('"
                 + bookInfo.getTitle() + "','" + bookInfo.getAuthor() + "','" + bookInfo.getPublisher() + "','"
                 + bookInfo.getPublishDate() + "','"
@@ -73,7 +73,8 @@ public class BooksService {
                 + "sysdate(),"
                 + "sysdate(),'"
                 + bookInfo.getIsbn() + "','"
-                + bookInfo.getDescription() + "')";
+                + bookInfo.getDescription() + "');";
+          
 
         jdbcTemplate.update(sql);
 
@@ -183,20 +184,22 @@ public class BooksService {
     /**
      * 貸出機能
      * @param bookId 書籍ID
+     * @param userId 書籍ID
      */
 
-    public void bollowSystem(int bookId) {
-        String sql = "UPDATE lending SET LENDCHECK='貸出中' where bookId=" + bookId;
+    public void bollowSystem(int userId, int bookId) {
+        String sql = "UPDATE lending SET LENDCHECK='貸出中' , userid=" + userId + " where bookId=" + bookId;
         jdbcTemplate.update(sql);
     }
 
     /**
      * 返却機能
      * @param bookId 書籍ID
+     * @param userId 書籍ID
      */
 
-    public void returnSystem(int bookId) {
-        String sql = "UPDATE lending SET LENDCHECK='貸出可' where bookId=" + bookId;
+    public void returnSystem(int userId, int bookId) {
+        String sql = "UPDATE lending SET LENDCHECK='貸出可',userid=0 where bookId=" + bookId;
         jdbcTemplate.update(sql);
     }
 
@@ -213,6 +216,17 @@ public class BooksService {
     }
 
     /**
+     * 借りている本のユーザーIDを取得
+     * @param bookId
+     * @return　ユーザーID
+     */
+    public int bollowUserId(int bookId) {
+        String sql = "select USERID from lending where bookId=" + bookId;
+        int bollowUserId = jdbcTemplate.queryForObject(sql, Integer.class);
+        return bollowUserId;
+    }
+
+    /**
      * 貸出テーブルに追加
      * @param bookId 書籍ID
      */
@@ -222,6 +236,22 @@ public class BooksService {
         jdbcTemplate.update(sql);
     }
 
+
+    /**
+     * 貸出中の本を取得(ユーザーごと)
+     * @param userId 書籍ID
+     * @return 書籍リスト
+     */
+    public List<BookInfo> getLendingBookList(int userId) {
+
+        List<BookInfo> getedBookList = jdbcTemplate.query(
+
+                "select books.id,title,author,publisher,publish_date,thumbnail_url from lending join books on lending.bookid=books.id where userid="
+                        + userId,
+                new BookInfoRowMapper());
+
+        return getedBookList;
+    }
 
 
 }

@@ -41,6 +41,7 @@ public class LendingBookController {
     @RequestMapping(value = "/rentBook", method = RequestMethod.POST)
     public String rentBook(
             Locale locale,
+            @RequestParam("userId") Integer userId,
             @RequestParam("bookId") Integer bookId,
             Model model) {
         logger.info("Welcome delete! The client locale is {}.", locale);
@@ -51,7 +52,7 @@ public class LendingBookController {
         String beforebollowCheck = booksService.bollowCheck(bookId);
 
         if (beforebollowCheck.equals("貸出可")) {
-            booksService.bollowSystem(bookId);
+            booksService.bollowSystem(userId, bookId);
         }
 
         String afterbollowCheck = booksService.bollowCheck(bookId);
@@ -62,6 +63,10 @@ public class LendingBookController {
 
         BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(bookId);
         model.addAttribute("bookDetailsInfo", bookDetailsInfo);
+
+        //この本を借りているユーザーIDを表示
+        int bollowUserId = booksService.bollowUserId(bookId);
+        model.addAttribute("bollowUserId", bollowUserId);
 
 
         return "details";
@@ -81,6 +86,7 @@ public class LendingBookController {
     @RequestMapping(value = "/returnBook", method = RequestMethod.POST)
     public String returnBook(
             Locale locale,
+            @RequestParam("userId") Integer userId,
             @RequestParam("bookId") Integer bookId,
             Model model) {
         logger.info("Welcome delete! The client locale is {}.", locale);
@@ -90,7 +96,7 @@ public class LendingBookController {
         String beforebollowCheck = booksService.bollowCheck(bookId);
 
         if (beforebollowCheck.equals("貸出中")) {
-            booksService.returnSystem(bookId);
+            booksService.returnSystem(userId, bookId);
         }
 
         String afterbollowCheck = booksService.bollowCheck(bookId);
@@ -101,6 +107,10 @@ public class LendingBookController {
 
         BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(bookId);
         model.addAttribute("bookDetailsInfo", bookDetailsInfo);
+
+        //この本を借りているユーザーIDを表示
+        int bollowUserId = booksService.bollowUserId(bookId);
+        model.addAttribute("bollowUserId", bollowUserId);
 
         return "details";
 

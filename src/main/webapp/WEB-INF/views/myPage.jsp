@@ -35,7 +35,7 @@
     </header>
     <main>
         <h1>マイページ</h1>
-        <div class="content_body">
+        <div class="mypage_body content_body">
             <div>
                 <ul class="user_box">
                     <c:if test="${not empty userInfo}">
@@ -45,6 +45,7 @@
                     </c:if>
                 </ul>
             </div>
+            <h2 class="booklist_title">借りている本</h2>
             <div class="booklist">
                 <c:forEach var="bookInfo" items="${bookList}">
                     <div class="books">

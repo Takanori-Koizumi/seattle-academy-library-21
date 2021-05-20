@@ -427,3 +427,17 @@ color:#7fbfff;
     background-color: transparent;
     border: transparent;
 }
+.mypage_body{
+	display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.booklist_title{
+	padding: 1rem 2rem;
+  	color: #fff;
+  	background: #7db4e6;
+  	box-shadow: 5px 5px 0 #4492e0;
+  	font-size:1.5em;
+  	margin:40px 0;
+}
