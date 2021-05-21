@@ -5,31 +5,26 @@ $(function(){
 	//ボタンの活性化、非活性化
 	
 	if($('#lendingStatus_label').text()=="貸出中"){
-		
-				
+					
 		if($('#bollow_userId').val()==sessionStorage.getItem('userId')){
 			$("#return").hover(function() {
-			$(this).addClass('cursor_pointer');
-			$(this).addClass('opacity_hover');
+				$(this).addClass('cursor_pointer');
+				$(this).addClass('opacity_hover');
 			
-  		},function(){	
-			$(this).removeClass('cursor_pointer');
-			$(this).removeClass('opacity_hover');
-  		});
-		
-		$('#rent').addClass('opacity_inValid');	
-		$('#rent').prop('disabled',true);	
-		$('#return').prop('disabled',false);	
-		$('#return').removeClass('opacity_inValid');
-		}else{
-			$('#rent').addClass('opacity_inValid');	
-			$('#rent').prop('disabled',true);	
+  			},function(){	
+				$(this).removeClass('cursor_pointer');
+				$(this).removeClass('opacity_hover');
+  			});
+						
+			$('#return').prop('disabled',false);	
+			$('#return').removeClass('opacity_inValid');
+		}else{	
 			$('#return').prop('disabled',true);	
-			$('#return').addClass('opacity_inValid');
-			
-			
+			$('#return').addClass('opacity_inValid');						
 		}
 		
+		$('#rent').addClass('opacity_inValid');	
+		$('#rent').prop('disabled',true);
 	}
 	
 	if($('#lendingStatus_label').text()=="貸出可"){
