@@ -86,6 +86,10 @@ public class AccountController {
         userInfo.setPassword(password);
         usersService.registUser(userInfo);
 
+        //ユーザーIDを取得      
+        int userId = usersService.returnUserId(email, password);
+        model.addAttribute("userId", userId);
+
         model.addAttribute("bookList", booksService.getBookList());
         return "home";
     }

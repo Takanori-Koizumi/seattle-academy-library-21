@@ -15,6 +15,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="resources/js/thumbnail.js"></script>
 <script src="resources/js/addBtn.js"></script>
+<script src="resources/js/user.js" /></script>
 </head>
 <body class="wrapper">
       
@@ -29,6 +30,12 @@
         <div class="right">
                   
             <ul>
+                <li>
+                <form method="post" action="mypage">
+                <button id="mypage" type="submit"  class="menu">マイページ</button>
+                <input id="userId" type="hidden" name="userId" value="${userId}">
+                </form>             
+                </li>
                 <li><a href="<%=request.getContextPath()%>/home" class="menu">Home</a></li>
                 <li><a href="<%=request.getContextPath()%>/">ログアウト</a></li>
             </ul>

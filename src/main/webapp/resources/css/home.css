@@ -415,3 +415,29 @@ color:#7fbfff;
 .book_auther_list_2{
 	font-size:13px;
 }
+
+.user_box li{
+	
+	font-size:20px;
+	margin:10px 0;
+}
+#mypage{
+	cursor:pointer;
+	color: #707070;
+    background-color: transparent;
+    border: transparent;
+}
+.mypage_body{
+	display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.booklist_title{
+	padding: 1rem 2rem;
+  	color: #fff;
+  	background: #7db4e6;
+  	box-shadow: 5px 5px 0 #4492e0;
+  	font-size:1.5em;
+  	margin:40px 0;
+}

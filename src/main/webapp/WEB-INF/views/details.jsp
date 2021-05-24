@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="resources/css/lightbox.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="resources/js/lightbox.js" /></script>
+<script src="resources/js/user.js" /></script>
 <script src="resources/js/book.js" /></script>
 </head>
 <body class="wrapper">
@@ -25,6 +26,12 @@
         </div>
         <div class="right">
             <ul>
+                <li>
+                <form method="post" action="mypage">
+                <button id="mypage" type="submit"  class="menu">マイページ</button>
+                <input id="userId" type="hidden" name="userId" value="${userId}">
+                </form>             
+                </li>
                 <li><a href="<%= request.getContextPath()%>/home" class="menu">Home</a></li>
                 <li><a href="<%= request.getContextPath()%>/">ログアウト</a></li>
             </ul>
@@ -48,6 +55,7 @@
                         <div class="error">${bookDeleteError}</div>
                     </c:if>
                     <p id="lendingStatus_label">${rendCheck}</p>
+                    <input id="bollow_userId" type="hidden" value="${bollowUserId}">
                 </div>
             </div>
             <div class="content_right">
@@ -80,9 +88,11 @@
         <div class="edtDelBookBtn_box">
             <form method="post" action="rentBook">
                 <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="btn_rentBook" id="rent">借りる</button>
+                <input id="userId" type="hidden" name="userId" value="${userId}">
             </form>
             <form method="post" action="returnBook">
                 <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="btn_returnBook" id="return">返す</button>
+                <input id="userId" type="hidden" name="userId" value="${userId}">
             </form>
             <form method="post" action="editBookReturn">
                 <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="btn_editBook">編集</button>

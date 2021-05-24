@@ -55,4 +55,31 @@ public class UsersService {
 
     }
 
+    /**
+     * ユーザーID取得
+     * @param email メールアドレス
+     * @param password パスワード
+     * @return ユーザーID
+     */
+
+    public int returnUserId(String email, String password) {
+        String sql = "select id from users where email='" + email + "' and password='" + password + "';";
+        int userId = jdbcTemplate.queryForObject(sql, Integer.class);
+        return userId;
+    }
+
+    /**
+     * ユーザー情報を取得(IDから)
+     * @param userId ユーザーID
+     * @return ユーザー情報
+     */
+
+    public UserInfo returnUserInfo(int userId) {
+
+        String sql = "select id,email,password from users where id=" + userId + ";";
+        UserInfo returnUserInfo = jdbcTemplate.queryForObject(sql, new UserCountRowMapper());
+        return returnUserInfo;
+
+    }
+
 }

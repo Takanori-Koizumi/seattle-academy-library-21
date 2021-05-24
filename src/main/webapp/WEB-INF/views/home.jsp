@@ -12,6 +12,7 @@
 <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="resources/js/book.js" /></script>
+<script src="resources/js/login.js" /></script>
 </head>
 <body class="wrapper">
     <header>
@@ -21,6 +22,12 @@
         </div>
         <div class="right">
             <ul>
+                <li>
+                <form method="post" action="mypage">
+                <button id="mypage" type="submit"  class="menu">マイページ</button>
+                <input id="userId" type="hidden" name="userId" value="${userId}">
+                </form>
+                </li>
                 <li><a href="<%=request.getContextPath()%>/home" class="menu">Home</a></li>
                 <li><a href="<%=request.getContextPath()%>/">ログアウト</a></li>
             </ul>
@@ -31,7 +38,8 @@
         <a href="<%=request.getContextPath()%>/addBook" class="btn_add_book">書籍の追加</a> <a href="<%=request.getContextPath()%>/bulkRegistration" class="btn_bulk_book">一括登録</a> <a href="<%=request.getContextPath()%>/bulkDelete" class="btn_bulkDelete" id="bulkDelete">一括削除</a>
         <form id="form5" action="<%=request.getContextPath()%>/searchBooks" method="post" enctype="multipart/form-data" id="data_upload_form">
             <div class="radio">
-                <input type="radio" name="radio" class="radio-input" id="radio-01" value="part-match" checked> <label for="radio-01">部分一致</label><br><input type="radio" name="radio" class="radio-input" id="radio-02" value="perfect-match" > <label for="radio-02">完全一致</label>
+                <input type="radio" name="radio" class="radio-input" id="radio-01" value="part-match" checked> <label for="radio-01">部分一致</label><br>
+                <input type="radio" name="radio" class="radio-input" id="radio-02" value="perfect-match"> <label for="radio-02">完全一致</label>
             </div>
             <div class="search_box">
                 <c:if test="${!empty searchedTitle}">
@@ -62,7 +70,8 @@
                             <ul class="home_list">
                                 <c:if test="${not empty bookInfo}">
                                     <li class="book_title">${bookInfo.title}</li>
-                                    <li class="book_author"><p class="book_auther_list_1">${bookInfo.author}</p><p class="book_auther_list_2">(著)</p></li>
+                                    <li class="book_author"><p class="book_auther_list_1">${bookInfo.author}</p>
+                                        <p class="book_auther_list_2">(著)</p></li>
                                     <li class="book_publisher">出版社:${bookInfo.publisher}</li>
                                     <li class="book_publish_date">出版日:${bookInfo.publishDate}</li>
                                 </c:if>
