@@ -13,10 +13,12 @@
 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="resources/css/lightbox.css">
+<link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="resources/js/lightbox.js" /></script>
 <script src="resources/js/user.js" /></script>
 <script src="resources/js/book.js" /></script>
+<script src="resources/js/details.js" /></script>
 </head>
 <body class="wrapper">
     <header>
@@ -27,13 +29,18 @@
         <div class="right">
             <ul>
                 <li>
-                <form method="post" action="mypage">
-                <button id="mypage" type="submit"  class="menu">マイページ</button>
-                <input id="userId" type="hidden" name="userId" value="${userId}">
-                </form>             
+                    <form method="post" action="mypage">
+                        <button id="mypage" type="submit" class="menu">マイページ</button>
+                        <input class="userId" type="hidden" name="userId" value="${userId}">
+                    </form>
                 </li>
-                <li><a href="<%= request.getContextPath()%>/home" class="menu">Home</a></li>
-                <li><a href="<%= request.getContextPath()%>/">ログアウト</a></li>
+                <li>
+                    <form method="post" action="home">
+                        <button id="mypage" type="submit" class="menu">Home</button>
+                        <input class="userId" type="hidden" name="userId" value="${userId}">
+                    </form>
+                </li>
+                <li><a href="<%=request.getContextPath()%>/">ログアウト</a></li>
             </ul>
         </div>
     </header>
@@ -50,12 +57,23 @@
                         </c:if> <input type="hidden" name="bookId" value="${bookDetailsInfo.bookId}">
                     </a>
                 </div>
-                <div class="lendingStatus_label">
-                    <c:if test="${not empty bookDeleteError}">
-                        <div class="error">${bookDeleteError}</div>
-                    </c:if>
-                    <p id="lendingStatus_label">${rendCheck}</p>
-                    <input id="bollow_userId" type="hidden" value="${bollowUserId}">
+                <div class="book_status">
+                    <div class="lendingStatus_label">
+                        <c:if test="${not empty bookDeleteError}">
+                            <div class="error">${bookDeleteError}</div>
+                        </c:if>
+                        <p id="lendingStatus_label">${rendCheck}</p>
+                        <input id="bollow_userId" type="hidden" value="${bollowUserId}">
+                    </div>
+                    <div class="favorite">
+                        <form method="post" action="favoriteBook">
+                            <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="favorite-btn">
+                                <i id="fav" class="fas fa-heart unlike-btn"></i>
+                            </button>
+                            <input class="userId" type="hidden" name="userId" value="${userId}">
+                        </form>
+                        <input id="favoriteCheck" type="hidden" value="${favoriteCheck}">
+                    </div>
                 </div>
             </div>
             <div class="content_right">
@@ -88,17 +106,17 @@
         <div class="edtDelBookBtn_box">
             <form method="post" action="rentBook">
                 <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="btn_rentBook" id="rent">借りる</button>
-                <input id="userId" type="hidden" name="userId" value="${userId}">
+                <input class="userId" type="hidden" name="userId" value="${userId}">
             </form>
             <form method="post" action="returnBook">
                 <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="btn_returnBook" id="return">返す</button>
-                <input id="userId" type="hidden" name="userId" value="${userId}">
+                <input class="userId" type="hidden" name="userId" value="${userId}">
             </form>
             <form method="post" action="editBookReturn">
                 <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="btn_editBook">編集</button>
             </form>
             <form method="post" action="deleteBook">
-                <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="btn_deleteBook">削除</button>
+                <button type="submit" value="${bookDetailsInfo.bookId}" name="bookId" class="btn_deleteBook" id="delete">削除</button>
             </form>
         </div>
     </main>

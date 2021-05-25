@@ -39,12 +39,17 @@
                   
             <ul>
                 <li>
-                <form method="post" action="mypage">
-                <button id="mypage" type="submit"  class="menu">マイページ</button>
-                <input id="userId" type="hidden" name="userId" value="${userId}">
-                </form>             
+                    <form method="post" action="mypage">
+                        <button id="mypage" type="submit" class="menu">マイページ</button>
+                        <input class="userId" type="hidden" name="userId" value="${userId}">
+                    </form>
                 </li>       
-                <li><a href="<%=request.getContextPath()%>/home" class="menu">Home</a></li>         
+                <li>
+                    <form method="post" action="home">
+                        <button id="mypage" type="submit" class="menu">Home</button>
+                        <input class="userId" type="hidden" name="userId" value="${userId}">
+                    </form>
+                </li>         
                 <li><a href="<%=request.getContextPath()%>/">ログアウト</a></li>       
             </ul>
                 
@@ -60,7 +65,7 @@
                     <span>書籍の画像</span> <span class="care care1">任意</span>
                     <div class="book_thumnail">
                         <c:if test="${!empty bookInfo}">
-                                <img class="book_noimg" src="resources/img/noImg.png">            
+                            <img class="book_noimg" src="resources/img/noImg.png">
                         </c:if>
                         <c:if test="${empty bookInfo}">
                             <img class="book_noimg" src="resources/img/noImg.png">
@@ -135,7 +140,6 @@
                         </c:if>
                     </div>
                     <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}">
-                   
                 </div>
             </div>
             <div class="addBookBtn_box">

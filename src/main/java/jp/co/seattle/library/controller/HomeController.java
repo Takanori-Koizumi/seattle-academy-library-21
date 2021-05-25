@@ -27,10 +27,14 @@ public class HomeController {
     /**
      * Homeボタンからホーム画面に戻るページ
      * @param model
+     * @param userId ユーザーID
      * @return
      */
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String transitionHome(Model model) {
+    @RequestMapping(value = "/home", method = RequestMethod.POST)
+    public String transitionHome(Model model,
+            @RequestParam("userId") Integer userId) {
+
+        model.addAttribute("userId", userId);
         model.addAttribute("bookList", booksService.getBookList());
         return "home";
     }
@@ -51,6 +55,8 @@ public class HomeController {
 
         model.addAttribute("bookList", booksService.getSearchBookList(searchTitle, matchCheck));
         model.addAttribute("searchedTitle", searchTitle);
+
+
         return "home";
     }
 

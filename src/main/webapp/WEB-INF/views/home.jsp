@@ -23,12 +23,17 @@
         <div class="right">
             <ul>
                 <li>
-                <form method="post" action="mypage">
-                <button id="mypage" type="submit"  class="menu">マイページ</button>
-                <input id="userId" type="hidden" name="userId" value="${userId}">
-                </form>
+                    <form method="post" action="mypage">
+                        <button id="mypage" type="submit" class="menu">マイページ</button>
+                        <input class="userId" type="hidden" name="userId" value="${userId}">
+                    </form>
                 </li>
-                <li><a href="<%=request.getContextPath()%>/home" class="menu">Home</a></li>
+                <li>
+                    <form method="post" action="home">
+                        <button  id="mypage" type="submit" class="menu">Home</button>
+                        <input class="userId" type="hidden" name="userId" value="${userId}">
+                    </form>
+                </li>
                 <li><a href="<%=request.getContextPath()%>/">ログアウト</a></li>
             </ul>
         </div>
@@ -38,8 +43,7 @@
         <a href="<%=request.getContextPath()%>/addBook" class="btn_add_book">書籍の追加</a> <a href="<%=request.getContextPath()%>/bulkRegistration" class="btn_bulk_book">一括登録</a> <a href="<%=request.getContextPath()%>/bulkDelete" class="btn_bulkDelete" id="bulkDelete">一括削除</a>
         <form id="form5" action="<%=request.getContextPath()%>/searchBooks" method="post" enctype="multipart/form-data" id="data_upload_form">
             <div class="radio">
-                <input type="radio" name="radio" class="radio-input" id="radio-01" value="part-match" checked> <label for="radio-01">部分一致</label><br>
-                <input type="radio" name="radio" class="radio-input" id="radio-02" value="perfect-match"> <label for="radio-02">完全一致</label>
+                <input type="radio" name="radio" class="radio-input" id="radio-01" value="part-match" checked> <label for="radio-01">部分一致</label><br> <input type="radio" name="radio" class="radio-input" id="radio-02" value="perfect-match"> <label for="radio-02">完全一致</label>
             </div>
             <div class="search_box">
                 <c:if test="${!empty searchedTitle}">
@@ -65,7 +69,7 @@
                                     </c:if> <c:if test="${bookInfo.thumbnail != 'null'}">
                                         <img class="book_noimg" src="${bookInfo.thumbnail}">
                                     </c:if>
-                                </a> <input type="hidden" name="bookId" value="${bookInfo.bookId}">
+                                </a> <input type="hidden" name="bookId" value="${bookInfo.bookId}"><input class="userId" type="hidden" name="userId" value="${userId}">
                             </form>
                             <ul class="home_list">
                                 <c:if test="${not empty bookInfo}">

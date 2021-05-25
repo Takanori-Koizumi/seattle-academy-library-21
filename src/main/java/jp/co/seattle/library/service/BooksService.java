@@ -184,7 +184,7 @@ public class BooksService {
     /**
      * 貸出機能
      * @param bookId 書籍ID
-     * @param userId 書籍ID
+     * @param userId ユーザーID
      */
 
     public void bollowSystem(int userId, int bookId) {
@@ -195,7 +195,7 @@ public class BooksService {
     /**
      * 返却機能
      * @param bookId 書籍ID
-     * @param userId 書籍ID
+     * @param userId ユーザーID
      */
 
     public void returnSystem(int userId, int bookId) {
@@ -217,7 +217,7 @@ public class BooksService {
 
     /**
      * 借りている本のユーザーIDを取得
-     * @param bookId
+     * @param bookId 書籍ID
      * @return　ユーザーID
      */
     public int bollowUserId(int bookId) {
@@ -239,7 +239,7 @@ public class BooksService {
 
     /**
      * 貸出中の本を取得(ユーザーごと)
-     * @param userId 書籍ID
+     * @param userId ユーザーID
      * @return 書籍リスト
      */
     public List<BookInfo> getLendingBookList(int userId) {
@@ -248,6 +248,54 @@ public class BooksService {
 
                 "select books.id,title,author,publisher,publish_date,thumbnail_url from lending join books on lending.bookid=books.id where userid="
                         + userId,
+                new BookInfoRowMapper());
+
+        return getedBookList;
+    }
+
+    /**
+     * お気に入りチェック
+     * @param userId ユーザーID
+     * @param bookId 書籍ID
+     * @return　お気に入りチェック
+     */
+    public int favoriteCheck(int userId, int bookId) {
+        String sql = "select count(*) from likes where BOOKID=" + bookId + " and USERID=" + userId;
+        int favoriteCheck = jdbcTemplate.queryForObject(sql, Integer.class);
+        return favoriteCheck;
+    }
+
+    /**
+     * お気に入りテーブルに追加
+     * @param userId ユーザーID
+     * @param bookId 書籍ID
+     */
+    public void addFavorite(int userId, int bookId) {
+        String sql = "insert into likes (BOOKID,USERID) values (" + bookId + "," + userId + ")";
+        jdbcTemplate.update(sql);
+    }
+
+    /**
+    * お気に入りテーブルから削除
+    * @param userId ユーザーID
+    * @param bookId 書籍ID
+    */
+    public void removeFavorite(int userId, int bookId) {
+        String sql = "delete from likes where BOOKID=" + bookId + " and USERID=" + userId;
+        jdbcTemplate.update(sql);
+    }
+
+    /**
+     * お気に入りの本を取得(ユーザーごと)
+     * @param userId ユーザーID
+     * @return 書籍リスト
+     */
+    public List<BookInfo> getFavoriteBookList(int userId) {
+
+        List<BookInfo> getedBookList = jdbcTemplate.query(
+
+                "select books.id,title,author,publisher,publish_date,thumbnail_url from likes join books on likes.bookid=books.id where userid="
+                        + userId + " order by title asc",
                 new BookInfoRowMapper());
 
         return getedBookList;

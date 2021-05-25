@@ -23,12 +23,17 @@
         <div class="right">
             <ul>
                 <li>
-                <form method="post" action="mypage">
-                <button id="mypage" type="submit"  class="menu">マイページ</button>
-                <input id="userId" type="hidden" name="userId" value="${userId}">
-                </form>             
+                    <form method="post" action="mypage">
+                        <button id="mypage" type="submit" class="menu">マイページ</button>
+                        <input class="userId" type="hidden" name="userId" value="${userId}">
+                    </form>
                 </li>
-                <li><a href="<%=request.getContextPath()%>/home" class="menu">Home</a></li>
+                <li>
+                    <form method="post" action="home">
+                        <button id="mypage" type="submit" class="menu">Home</button>
+                        <input class="userId" type="hidden" name="userId" value="${userId}">
+                    </form>
+                </li>
                 <li><a href="<%=request.getContextPath()%>/">ログアウト</a></li>
             </ul>
         </div>
@@ -47,7 +52,7 @@
             </div>
             <h2 class="booklist_title">借りている本</h2>
             <div class="booklist">
-                <c:forEach var="bookInfo" items="${bookList}">
+                <c:forEach var="bookInfo" items="${lendingBookList}">
                     <div class="books">
                         <form method="post" class="book_thumnail" action="<%=request.getContextPath()%>/details">
                             <a href="javascript:void(0)" onclick="this.parentNode.submit();"> <c:if test="${bookInfo.thumbnail=='null'}">
@@ -55,7 +60,31 @@
                                 </c:if> <c:if test="${bookInfo.thumbnail != 'null'}">
                                     <img class="book_noimg" src="${bookInfo.thumbnail}">
                                 </c:if>
-                            </a> <input type="hidden" name="bookId" value="${bookInfo.bookId}">
+                            </a> <input type="hidden" name="bookId" value="${bookInfo.bookId}"><input class="userId" type="hidden" name="userId" value="${userId}">
+                        </form>
+                        <ul class="home_list">
+                            <c:if test="${not empty bookInfo}">
+                                <li class="book_title">${bookInfo.title}</li>
+                                <li class="book_author"><p class="book_auther_list_1">${bookInfo.author}</p>
+                                    <p class="book_auther_list_2">(著)</p></li>
+                                <li class="book_publisher">出版社:${bookInfo.publisher}</li>
+                                <li class="book_publish_date">出版日:${bookInfo.publishDate}</li>
+                            </c:if>
+                        </ul>
+                    </div>
+                </c:forEach>
+            </div>
+            <h2 class="booklist_title">お気に入りの本</h2>
+            <div class="booklist">
+                <c:forEach var="bookInfo" items="${favoriteBookList}">
+                    <div class="books">
+                        <form method="post" class="book_thumnail" action="<%=request.getContextPath()%>/details">
+                            <a href="javascript:void(0)" onclick="this.parentNode.submit();"> <c:if test="${bookInfo.thumbnail=='null'}">
+                                    <img class="book_noimg" src="resources/img/noImg.png">
+                                </c:if> <c:if test="${bookInfo.thumbnail != 'null'}">
+                                    <img class="book_noimg" src="${bookInfo.thumbnail}">
+                                </c:if>
+                            </a> <input type="hidden" name="bookId" value="${bookInfo.bookId}"><input class="userId" type="hidden" name="userId" value="${userId}">
                         </form>
                         <ul class="home_list">
                             <c:if test="${not empty bookInfo}">

@@ -39,12 +39,17 @@
                   
             <ul>
                 <li>
-                <form method="post" action="mypage">
-                <button id="mypage" type="submit"  class="menu">マイページ</button>
-                <input id="userId" type="hidden" name="userId" value="${userId}">
-                </form>             
+                    <form method="post" action="mypage">
+                        <button id="mypage" type="submit" class="menu">マイページ</button>
+                        <input class="userId" type="hidden" name="userId" value="${userId}">
+                    </form>
                 </li>     
-                <li><a href="<%=request.getContextPath()%>/home" class="menu">Home</a></li>         
+                <li>
+                    <form method="post" action="home">
+                        <button id="mypage" type="submit" class="menu">Home</button>
+                        <input class="userId" type="hidden" name="userId" value="${userId}">
+                    </form>
+                </li>     
                 <li><a href="<%=request.getContextPath()%>/">ログアウト</a></li>       
             </ul>
                 
@@ -68,7 +73,7 @@
                     <c:if test="${not empty csvErrors}">
                         <div class="error">
                             <c:forEach var="error" items="${csvErrors}">
-                                    <p>${error}</p>
+                                <p>${error}</p>
                             </c:forEach>
                         </div>
                     </c:if>
@@ -85,7 +90,6 @@
                     </c:if>
                 </div>
             </div>
-            
         </form>
     </main>
 </body>

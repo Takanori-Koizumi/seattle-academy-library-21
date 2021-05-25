@@ -61,6 +61,7 @@ public class EditBookController {
     public String editBook(
             Locale locale,
             @RequestParam("bookId") Integer bookId,
+            @RequestParam("userId") Integer userId,
             @RequestParam("title") String title,
             @RequestParam("author") String author,
             @RequestParam("publisher") String publisher,
@@ -165,6 +166,8 @@ public class EditBookController {
 
         String bollowCheck = booksService.bollowCheck(bookId);
         model.addAttribute("rendCheck", bollowCheck);
+
+        model.addAttribute("favoriteCheck", booksService.favoriteCheck(userId, bookId));
 
         //  詳細画面に遷移する
         return "details";
