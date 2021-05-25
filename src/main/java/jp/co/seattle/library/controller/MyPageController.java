@@ -41,7 +41,10 @@ public class MyPageController {
         model.addAttribute("userInfo", userInfo);
 
         //貸出中の本を表示
-        model.addAttribute("bookList", booksService.getLendingBookList(userId));
+        model.addAttribute("lendingBookList", booksService.getLendingBookList(userId));
+
+        //お気に入りの本を表示
+        model.addAttribute("favoriteBookList", booksService.getFavoriteBookList(userId));
 
 
         return "myPage";

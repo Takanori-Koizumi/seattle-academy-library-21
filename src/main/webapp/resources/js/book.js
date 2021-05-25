@@ -25,6 +25,8 @@ $(function(){
 		
 		$('#rent').addClass('opacity_inValid');	
 		$('#rent').prop('disabled',true);
+		$('#delete').addClass('opacity_inValid');	
+		$('#delete').prop('disabled',true);
 	}
 	
 	if($('#lendingStatus_label').text()=="貸出可"){
@@ -37,10 +39,20 @@ $(function(){
 			$(this).removeClass('opacity_hover');
   		});
 
+		$("#delete").hover(function() {
+			$(this).addClass('cursor_pointer');
+			$(this).addClass('opacity_hover');
+  		},function(){	
+			$(this).removeClass('cursor_pointer');
+			$(this).removeClass('opacity_hover');
+  		});
+
 		$('#return').addClass('opacity_inValid');
 		$('#rent').removeClass('opacity_inValid');
+		$('#delete').removeClass('opacity_inValid');	
 		$('#return').prop('disabled',true);
-		$('#rent').prop('disabled',false);		
+		$('#rent').prop('disabled',false);	
+		$('#delete').prop('disabled',false);		
 	}
 	
 	

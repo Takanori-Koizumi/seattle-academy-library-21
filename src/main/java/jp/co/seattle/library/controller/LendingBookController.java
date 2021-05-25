@@ -32,6 +32,7 @@ public class LendingBookController {
      * 対象書籍を貸出する
      *
      * @param locale ロケール情報
+     * @param userId ユーザーID
      * @param bookId 書籍ID
      * @param model モデル情報
      * @return 遷移先画面名
@@ -68,6 +69,8 @@ public class LendingBookController {
         int bollowUserId = booksService.bollowUserId(bookId);
         model.addAttribute("bollowUserId", bollowUserId);
 
+        model.addAttribute("favoriteCheck", booksService.favoriteCheck(userId, bookId));
+
 
         return "details";
 
@@ -77,6 +80,7 @@ public class LendingBookController {
      * 対象書籍を返却する
      *
      * @param locale ロケール情報
+     * @param userId ユーザーID
      * @param bookId 書籍ID
      * @param model モデル情報
      * @return 遷移先画面名
@@ -111,6 +115,8 @@ public class LendingBookController {
         //この本を借りているユーザーIDを表示
         int bollowUserId = booksService.bollowUserId(bookId);
         model.addAttribute("bollowUserId", bollowUserId);
+
+        model.addAttribute("favoriteCheck", booksService.favoriteCheck(userId, bookId));
 
         return "details";
 

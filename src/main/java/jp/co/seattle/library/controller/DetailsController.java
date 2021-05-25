@@ -27,6 +27,7 @@ public class DetailsController {
     /**
      * 詳細画面に遷移する
      * @param locale
+     * @param userId 
      * @param bookId
      * @param model
      * @return
@@ -34,6 +35,7 @@ public class DetailsController {
     @Transactional
     @RequestMapping(value = "/details", method = RequestMethod.POST)
     public String detailsBook(Locale locale,
+            @RequestParam("userId") Integer userId,
             @RequestParam("bookId") Integer bookId,
             Model model) {
         // デバッグ用ログ
@@ -50,6 +52,8 @@ public class DetailsController {
             model.addAttribute("bollowUserId", bollowUserId);
         }
 
+        int favoriteCheck = booksService.favoriteCheck(userId, bookId);
+        model.addAttribute("favoriteCheck", favoriteCheck);
 
         return "details";
     }

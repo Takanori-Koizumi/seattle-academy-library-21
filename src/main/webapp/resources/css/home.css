@@ -194,7 +194,7 @@ button.btn_bulkRegist {
 	background-color: #FF9966;
 }
 
-a:hover, button:hover:not(.btn_rentBook,.btn_returnBook) {
+a:hover, button:hover:not(.btn_rentBook,.btn_returnBook,.btn_deleteBook) {
     opacity: 0.5;
 }
 
@@ -262,7 +262,7 @@ button.btn_addBook, button.btn_editBook, button.btn_deleteBook,button.btn_rentBo
 button.btn_addBook:focus, button.btn_editBook:focus, button.btn_deleteBook:focus,button.btn_rentBook:focus,button.btn_returnBook:focus,button.btn_bulkRegist:focus {
     outline: none;
 }
-button.btn_addBook:hover, button.btn_editBook:hover, button.btn_deleteBook:hover,button.btn_bulkRegist:hover .btn_bulkDelete:hover{
+button.btn_addBook:hover, button.btn_editBook:hover,button.btn_bulkRegist:hover .btn_bulkDelete:hover{
     cursor: pointer;
 }
 
@@ -440,4 +440,38 @@ color:#7fbfff;
   	box-shadow: 5px 5px 0 #4492e0;
   	font-size:1.5em;
   	margin:40px 0;
+}
+.unlike-btn {
+    
+    font-size: 25px;
+    color: #808080;
+}
+.like-btn {
+    
+    font-size: 25px;
+    color: #e54747; 
+}
+
+.book_status{
+	width:200px;
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.favorite-btn{
+	width: 40px;
+  	height: 40px;
+  	padding: 0;
+  	background: #fff;
+ 	border-radius: 50%;
+ 	-webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  	box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+.favorite-btn i{
+  	font-size: 200%;
+  	line-height: 40px;
+  	-webkit-transition: all .3s;
+  	transition: all .3s;
+  	letter-spacing: 0;
+	
 }

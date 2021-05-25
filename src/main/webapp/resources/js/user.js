@@ -4,7 +4,8 @@ $(function(){
 	$(document).ready(function(){
 
 		var data = sessionStorage.getItem('userId');
-		$('#userId').val(data);
+		$('.userId').val(data);
+		
 	});
 
 });

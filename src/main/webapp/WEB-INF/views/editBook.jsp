@@ -31,12 +31,17 @@
                   
             <ul>
                 <li>
-                <form method="post" action="mypage">
-                <button id="mypage" type="submit"  class="menu">マイページ</button>
-                <input id="userId" type="hidden" name="userId" value="${userId}">
-                </form>             
+                    <form method="post" action="mypage">
+                        <button id="mypage" type="submit" class="menu">マイページ</button>
+                        <input class="userId" type="hidden" name="userId" value="${userId}">
+                    </form>
                 </li>
-                <li><a href="<%=request.getContextPath()%>/home" class="menu">Home</a></li>
+                <li>
+                    <form method="post" action="home">
+                        <button id="mypage" type="submit" class="menu">Home</button>
+                        <input class="userId" type="hidden" name="userId" value="${userId}">
+                    </form>
+                </li>
                 <li><a href="<%=request.getContextPath()%>/">ログアウト</a></li>
             </ul>
                 
@@ -45,7 +50,6 @@
     </header>
       
     <main>
-    
         <form action="<%=request.getContextPath()%>/editBook" method="post" enctype="multipart/form-data" id="data_upload_form">
             <h1>書籍の編集</h1>
             <div class="content_body add_book_content">
@@ -128,6 +132,7 @@
                         </c:if>
                     </div>
                     <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}">
+                    <input class="userId" type="hidden" name="userId" value="${userId}">
                 </div>
             </div>
             <div class="addBookBtn_box">

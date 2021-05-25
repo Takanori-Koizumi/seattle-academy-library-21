@@ -54,6 +54,7 @@ public class DeleteBookController {
             int registBookId = booksService.getlatestBookId();
             BookDetailsInfo bookDetailsInfo = booksService.getBookInfo(registBookId);
             model.addAttribute("bookDetailsInfo", bookDetailsInfo);
+
             return "details";
         }
 

@@ -47,8 +47,10 @@ public class AddBooksController {
      * @param title 書籍名
      * @param author 著者名
      * @param publisher 出版社
-     * @param publishDtea 出版日
+     * @param publishDate 出版日
      * @param file サムネイルファイル
+     * @param isbn ISBN
+     * @param description 説明文
      * @param model モデル
      * @return 遷移先画面
      */
@@ -151,6 +153,8 @@ public class AddBooksController {
 
         String bollowCheck = booksService.bollowCheck(registBookId);
         model.addAttribute("rendCheck", bollowCheck);
+
+        model.addAttribute("favoriteCheck", 0);
 
         //  詳細画面に遷移する
         return "details";
