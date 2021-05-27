@@ -66,7 +66,7 @@ public class FavoriteBookController {
 
         model.addAttribute("favoriteCheck", booksService.favoriteCheck(userId, bookId));
 
-        return "details";
+        return "details2";
 
     }
 }

@@ -11,8 +11,11 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
 <link href="<c:url value="/resources/css/default.css" />" rel="stylesheet" type="text/css">
 <link href="<c:url value="/resources/css/login.css" />" rel="stylesheet" type="text/css">
+<link href="<c:url value="/resources/css/home.css" />" rel="stylesheet" type="text/css">
+<link href="<c:url value="/resources/css/back.css" />" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="resources/js/logout.js" /></script>
+<script src="resources/js/back.js" /></script>
 </head>
 <body>
     <div class="wrapper">
@@ -20,19 +23,42 @@
             <img class="mark" src="resources/img/logo.png" />
             <div class="logo">Seattle Library</div>
         </div>
-        <div class="authorization">
-            <div class="authorization_form">
-                <form method="post" action="login">
-                    <div class="title">ログイン</div>
-                    <label class="label">メールアドレス</label> <input type="text" class="input" name="email" id="email" autocomplete="off" required /> <label class="label">パスワード</label> <input type="password" class="input" id="password" name="password" required /> <input type="submit" class="button primary" value="ログイン" />
-                    <c:if test="${!empty errorMessage}">
-                        <div class="error">${errorMessage}</div>
-                    </c:if>
-                </form>
+        <div class="area">
+            <div class="authorization">
+                <div class="authorization_form">
+                    <form method="post" action="login">
+                        <div class="title">ログイン</div>
+                        <label class="label">メールアドレス</label> <input type="text" class="input" name="email" id="email" autocomplete="off" required /> <label class="label">パスワード</label> <input type="password" class="input" id="password" name="password" required /> <input type="submit" class="button primary" value="ログイン" />
+                        <c:if test="${!empty errorMessage}">
+                            <div class="error">${errorMessage}</div>
+                        </c:if>
+                    </form>
+                </div>
+                <div class="authorization_navi">
+                    <label class="authorization_text">まだアカウントをお持ちでないですか？</label> <a class="authorization_link marker" href="<%=request.getContextPath()%>/newAccount">アカウント作成</a>
+                </div>
             </div>
-            <div class="authorization_navi">
-                <label class="authorization_text">まだアカウントをお持ちでないですか？</label> <a class="authorization_link marker" href="<%=request.getContextPath()%>/newAccount">アカウント作成</a>
-            </div>
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
         </div>
         <footer>
             <div class="copyright">© 2019 Seattle Consulting Co., Ltd. All rights reserved.</div>

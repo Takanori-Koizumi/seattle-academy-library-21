@@ -1,5 +1,14 @@
 $(function(){
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//セッション機能
 	$(document).ready(function(){
 		
@@ -12,6 +21,15 @@ $(function(){
 			$('.userId').val(data);
 		}
 			
+	});
+	
+	$(window).on("load", function() {
+
+	// ローディング
+	setTimeout(function() {
+		$('.loader').fadeOut();
+	},600)
+
 	});
 
 });
