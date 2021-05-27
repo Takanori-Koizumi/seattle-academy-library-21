@@ -55,9 +55,27 @@ public class HomeController {
 
         model.addAttribute("bookList", booksService.getSearchBookList(searchTitle, matchCheck));
         model.addAttribute("searchedTitle", searchTitle);
-
+        model.addAttribute("allShow", "一覧表示");
 
         return "home";
     }
+
+    //    /**
+    //     * 書籍を一覧表示する
+    //     *
+    //     * @param locale ロケール情報
+    //     * @param model モデル情報
+    //     * @return 遷移先画面名
+    //     */
+    //    @Transactional
+    //    @RequestMapping(value = "/allShow", method = RequestMethod.GET)
+    //    public String bulkDelete(
+    //            Locale locale,
+    //            Model model) {
+    //        logger.info("Welcome delete! The client locale is {}.", locale);
+    //        model.addAttribute("bookList", booksService.getBookList());
+    //        return "home";
+    //
+    //    }
 
 }

@@ -49,14 +49,13 @@
                         <button id="mypage" type="submit" class="menu">Home</button>
                         <input class="userId" type="hidden" name="userId" value="${userId}">
                     </form>
-                </li>         
+                </li>
                 <li><a href="<%=request.getContextPath()%>/">ログアウト</a></li>       
             </ul>
                 
         </div>
           
     </header>
-      
     <main>
         <form action="<%=request.getContextPath()%>/insertBook" method="post" enctype="multipart/form-data" id="data_upload_form">
             <h1>書籍の追加</h1>
@@ -148,5 +147,12 @@
         </form>
         </div>
     </main>
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+        </div>
+    </div>
 </body>
 </html>

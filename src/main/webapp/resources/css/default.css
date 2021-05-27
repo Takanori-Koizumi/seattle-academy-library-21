@@ -241,7 +241,9 @@ main > .operation > .keyword {
 }
 /* メインコンテンツ */
 main {
-    margin: 20px;
+    padding: 20px;
+    min-height:100vh;
+    background-color:#ededed;
     /* min-height: 1024px; */
 }
 /* コンテンツ本体 */
@@ -255,7 +257,7 @@ footer {
     width: 100%;
     padding: 20px 0;
     border-top: solid 1px #cbcbcb;
-    margin-top: auto;
+    height:5vh;
 }
 footer > .copyright {
     color:#707070;

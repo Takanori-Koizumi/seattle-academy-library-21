@@ -53,9 +53,10 @@
                     <input id="sbox5" type="text" name="searchTitle" autocomplete="off" placeholder="タイトルを入力">
                 </c:if>
                 <button id="sbtn5" type="submit">検索</button>
+
             </div>
         </form>
-        <div class="content_body">
+        <div>
             <c:if test="${!empty resultMessage}">
                 <div class="error_msg">${resultMessage}</div>
             </c:if>
@@ -76,8 +77,8 @@
                                     <li class="book_title">${bookInfo.title}</li>
                                     <li class="book_author"><p class="book_auther_list_1">${bookInfo.author}</p>
                                         <p class="book_auther_list_2">(著)</p></li>
-                                    <li class="book_publisher">出版社:${bookInfo.publisher}</li>
-                                    <li class="book_publish_date">出版日:${bookInfo.publishDate}</li>
+                                    <li class="book_publisher">出版社：${bookInfo.publisher}</li>
+                                    <li class="book_publish_date">出版日：${bookInfo.publishDate}</li>
                                 </c:if>
                             </ul>
                         </div>
@@ -86,5 +87,12 @@
             </div>
         </div>
     </main>
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+        </div>
+    </div>
 </body>
 </html>

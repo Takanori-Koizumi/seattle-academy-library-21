@@ -120,12 +120,5 @@
             </form>
         </div>
     </main>
-    <div class="loader">
-        <div class="loader-inner">
-            <div class="line line1"></div>
-            <div class="line line2"></div>
-            <div class="line line3"></div>
-        </div>
-    </div>
 </body>
 </html>

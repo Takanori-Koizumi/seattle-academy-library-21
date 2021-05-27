@@ -18,17 +18,12 @@
 <script src="resources/js/user.js" /></script>
 </head>
 <body class="wrapper">
-      
     <header>
-            
         <div class="left">
-                  <img class="mark" src="resources/img/logo.png" />       
+            <img class="mark" src="resources/img/logo.png"/> 
             <div class="logo">Seattle Library</div>
-                
         </div>
-            
         <div class="right">
-                  
             <ul>
                 <li>
                     <form method="post" action="mypage">
@@ -48,7 +43,6 @@
         </div>
           
     </header>
-      
     <main>
         <form action="<%=request.getContextPath()%>/editBook" method="post" enctype="multipart/form-data" id="data_upload_form">
             <h1>書籍の編集</h1>
@@ -131,8 +125,7 @@
                             <input type="text" name="description">
                         </c:if>
                     </div>
-                    <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}">
-                    <input class="userId" type="hidden" name="userId" value="${userId}">
+                    <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}"> <input class="userId" type="hidden" name="userId" value="${userId}">
                 </div>
             </div>
             <div class="addBookBtn_box">
@@ -140,5 +133,12 @@
             </div>
         </form>
     </main>
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+        </div>
+    </div>
 </body>
 </html>
